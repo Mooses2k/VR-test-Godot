@@ -527,10 +527,8 @@ func _on_button_released_grab():
 #	held_object.collision_layer = held_object_data["layer"]
 #	held_object.collision_mask = held_object_data["mask"]
 	
-	held_object.apply_impulse(Vector3(0, 0, 0), controller_velocity)
-	
 	# Use the apply_impulse function to throw the RigidBody in the direction of the controller's velocity.
-#	held_object.apply_impulse(Vector3(0, 0, 0), controller_velocity) # turn on for normal fuction again
+	held_object.apply_impulse(Vector3(0, 0, 0), controller_velocity)
 	
 	# If the held object extends the VR_Interactable_Rigidbody class...
 	if held_object is VR_Interactable_Rigidbody:
