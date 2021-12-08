@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/Sword.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sword.scn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Assets_Material.tres" type="Material" id=3]
+[ext_resource path="res://Audio/Gamemaster_audio_Punch_and_Combat_Sounds/punch_grit_wet_impact_05.ogg" type="AudioStream" id=4]
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 0.0420251, -0.177819, 0.0291353, -0.0702594, 0.154696, -0.0183523, -0.0702594, 0.154696, 0.016179, -0.00115708, 1.4502, 0.00322276, 0.0333806, -0.151819, -0.0399594, -0.0313657, -0.151819, 0.0420996, 0.0679453, 0.159056, -0.0183523, -0.0313657, -0.182018, -0.0399594, 0.0290651, 1.32924, -0.00540404, -0.0270637, 1.34232, -0.00540404, 0.0679453, 0.154696, 0.016179, 0.0290651, -0.151819, 0.0420996, -0.0400238, -0.182018, 0.0291353, -0.00115708, 1.41564, -0.00540404, 0.0290651, -0.182018, -0.0399594, -0.0313657, -0.151819, -0.0399594, 0.0202087, -0.187045, 0.0245888, 0.0290651, -0.177819, 0.0420996, 0.016105, 1.394, -0.00540404, -0.018248, -0.186965, -0.0267169, -0.0141036, 1.40272, -0.00540404, -0.0267961, -0.187048, 0.0160308, 0.0159371, -0.187118, -0.0267222 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.02, 0.8, 0.02 )
+
+[node name="Sword" type="RigidBody"]
+script = ExtResource( 1 )
+
+[node name="Sword" parent="." instance=ExtResource( 2 )]
+transform = Transform( -4.51501e-08, -3.85492e-10, 1, -0.939692, 0.34202, -4.22953e-08, -0.34202, -0.939692, -1.58044e-08, 0, -0.0149358, 0.0885395 )
+material/0 = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( -4.51501e-08, -3.85492e-10, 1, -0.939692, 0.34202, -4.22953e-08, -0.34202, -0.939692, -1.58044e-08, 0, -0.0149358, 0.0885395 )
+shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.232046, -0.573685 )
+stream = ExtResource( 4 )
+
+[node name="Damage_Body" type="KinematicBody" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Damage_Body"]
+transform = Transform( 1, 0, 0, 0, 0.342021, 0.939693, 0, -0.939693, 0.342021, 0, 0.202807, -0.516253 )
+shape = SubResource( 2 )
